@@ -1,0 +1,42 @@
+h1{
+    display: flex;
+    background-color: rgb(72, 72, 112);
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    color: azure;
+    border: 20px;
+    width: auto;
+    height: 100px;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+aside{
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+    height: 500px;
+    flex-direction: column;
+    border-right: 10px solid grey;
+}
+section{
+    
+}
+article{
+    display: flex;
+    width: 100%;
+    border: 5px solid black;
+    margin: 10px;
+    height: 200px;
+
+
+}
+#future{
+    display: flex;
+    flex-direction: row;
+}
