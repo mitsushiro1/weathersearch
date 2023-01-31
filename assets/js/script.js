@@ -10,41 +10,70 @@ THEN I am again presented with current and future conditions for that city */
 
 
 
-// const API_KEY = "61bf20980c70be5141903b4046209f11";
 
-// const API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather`;
-// const CITY = "";
-// const COUNTRY_CODE = "";
+const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=cityName&appid=61bf20980c70be5141903b4046209f11`;
 
+ const API_KEY = "61bf20980c70be5141903b4046209f11";
 
-// fetch(`${API_ENDPOINT}?q=${CITY},${COUNTRY_CODE}&appid=${API_KEY}`)
-//   .then(response => response.json())
-//   .then(data => {
-//     console.log(data);
-//     // extract the data you need and update your app's state or display the data to the user
-//   })
-//   .catch(error => {
-//     console.error(error);
-//   });
+async function getWeatherData(searchForm) {
+    try {
+      
+      const response = await fetch(API_URL.replace(cityName, searchForm));
+      const data = await response.json();
 
 
+      const temperature = data.main.temp;
+    const humidity = data.main.humidity;
+    const windSpeed = data.wind.speed;
+    const weather = data.weather[0].main;
+
+
+
+    console.log(`Temperature: ${temperature}`);
+    console.log(`Humidity: ${humidity}`);
+    console.log(`Wind Speed: ${windSpeed}`);
+    console.log(`Weather: ${weather}`);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+var firstCity = document.getElementById("cityName");
 
 
 var searchBtn = document.getElementById("searchButton");
 var pastSrch = document.getElementById("pastSearch");
+var searchForm = document.getElementById("searchCity").value;
+var btn = document.createElement("button");
+var weather = document.getElementById("nowWeather");
+
+var weatherCity2 = document.getElementById("weatherCity2")
 
 searchBtn.addEventListener("click", function(event) {
   event.preventDefault();
-  var searchForm = document.getElementById("searchcity").value;
-  var btn = document.createElement("button");
-  btn.innerHTML = searchForm;
-  btn.classList.add("btn", "btn-primary");
-  pastSrch.appendChild(btn);
+
+  addButton(event);
+  addCity(event);
+  getWeatherData(searchForm);
+
+  
 });
-// var createButton = function() {
-//     var buttonColumnEl = $("<div>");
-//     buttonColumnEl.addclass("d-grid gap-2");
+
+    
+function addButton() {
+    btn.innerHTML = document.getElementById("searchCity").value;
+    btn.classList.add("btn", "btn-primary", "btn-lg");
+     pastSrch.appendChild(btn);
     
 
+};
+function addCity(){
+    var searchForm = document.getElementById("searchCity").value;
+    weather.innerHTML += searchForm + "<br>";
+   
+   
+    
 
-//}
+};
+

@@ -27,20 +27,23 @@
 
                 <div class="col-auto">
                     <label for="inputSearch" class="visually-hidden">Search</label>
-                    <input type="text" class="form-control" id="searchCity" placeholder="Search for a City">
+                    <input type="search" class="form-control" id="searchCity" placeholder="Search for a City">
                 </div>
                 <div class="col-auto">
                     <button type="click" class="btn btn-primary mb-3" id="searchButton">Search</button>
                 </div>
             </form>
             <ul id="pastSearch">
-                
+                <div class="d-grid gap-2">
+
+                </div>
+               
             </ul> 
 
         </aside>
         <section>
             <div class="container">
-                <article>
+                <article id="nowWeather">
                     <h2 id="cityName"></h2>
                     <ul>
                         <li id="temp"></li>
@@ -50,7 +53,7 @@
                 </article>
                 <section id = "future">
                     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
+                        <div class="card-header" id = "weatherCity2"></div>
                         <div class="card-body">
                             <h5 class="card-title">Secondary card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -58,7 +61,7 @@
                         </div>
                     </div>
                     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
+                        <div class="card-header" id = "weatherCity3"></div>
                         <div class="card-body">
                             <h5 class="card-title">Secondary card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -66,7 +69,7 @@
                         </div>
                     </div>
                     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
+                        <div class="card-header" id = "weatherCity4"></div>
                         <div class="card-body">
                             <h5 class="card-title">Secondary card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -74,7 +77,7 @@
                         </div>
                     </div>
                     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
+                        <div class="card-header" id = "weatherCity5"></div>
                         <div class="card-body">
                             <h5 class="card-title">Secondary card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -82,7 +85,7 @@
                         </div>
                     </div>
                     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
+                        <div class="card-header" id = "weatherCity6"></div>
                         <div class="card-body">
                             <h5 class="card-title">Secondary card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
