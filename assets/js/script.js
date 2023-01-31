@@ -8,37 +8,39 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city */
 
-var searchForm = document.getElementById("searchcity");
+
+
+// const API_KEY = "61bf20980c70be5141903b4046209f11";
+
+// const API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather`;
+// const CITY = "";
+// const COUNTRY_CODE = "";
+
+
+// fetch(`${API_ENDPOINT}?q=${CITY},${COUNTRY_CODE}&appid=${API_KEY}`)
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data);
+//     // extract the data you need and update your app's state or display the data to the user
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
+
+
+
+
 var searchBtn = document.getElementById("searchButton");
 var pastSrch = document.getElementById("pastSearch");
 
-const API_KEY = "61bf20980c70be5141903b4046209f11";
-
-const API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather`;
-const CITY = "";
-const COUNTRY_CODE = "";
-
-
-fetch(`${API_ENDPOINT}?q=${CITY},${COUNTRY_CODE}&appid=${API_KEY}`)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    // extract the data you need and update your app's state or display the data to the user
-  })
-  .catch(error => {
-    console.error(error);
-  });
-
-  searchBtn.on("click", function(event)  {
-    event.preventDefault();
-    var btn = document.createElement("button");
-    btn.innerHTML = searchForm.value;
-    btn.classList.add("btn", "btn-primary");
-    $("#pastSearch").appendChild(btn);
-    
-    
-    });
-
+searchBtn.addEventListener("click", function(event) {
+  event.preventDefault();
+  var searchForm = document.getElementById("searchcity").value;
+  var btn = document.createElement("button");
+  btn.innerHTML = searchForm;
+  btn.classList.add("btn", "btn-primary");
+  pastSrch.appendChild(btn);
+});
 // var createButton = function() {
 //     var buttonColumnEl = $("<div>");
 //     buttonColumnEl.addclass("d-grid gap-2");
