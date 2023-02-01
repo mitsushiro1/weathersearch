@@ -18,13 +18,13 @@ const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=cityName&appid
 async function getWeatherData(searchForm) {
     try {
       
-      const response = await fetch(API_URL.replace(cityName, searchForm));
+      const response = await fetch(API_URL.replace("cityName", searchForm.value));
       const data = await response.json();
 
 
-      const temperature = data.main.temp;
-    const humidity = data.main.humidity;
-    const windSpeed = data.wind.speed;
+    const temperature = (data.main.temp - 273.15).toFixed(1) + "°C";
+    const humidity = data.main.humidity + "%";
+    const windSpeed = data.wind.speed + "meter/sec";
     const weather = data.weather[0].main;
 
 
@@ -33,19 +33,51 @@ async function getWeatherData(searchForm) {
     console.log(`Humidity: ${humidity}`);
     console.log(`Wind Speed: ${windSpeed}`);
     console.log(`Weather: ${weather}`);
+    presentWeather(temperature, humidity, windSpeed, weather);
   } catch (error) {
     console.error(error);
   }
 }
 
+async function getForecastData (){
+ 
+ const API_URL = "http://api.openweathermap.org/data/2.5/forecast?q=cityName&appid=61bf20980c70be5141903b4046209f11"
 
+ try {
+      
+  const response = await fetch(API_URL.replace("cityName", searchForm.value));
+  const data = await response.json();
+
+console.log(data);
+ var forecastData = [
+  data.list[3],
+  data.list[11],
+  data.list[19],
+  data.list[27],
+  data.list[35]
+ ]
+
+for(i = 0; i <forecastData.length; i++){
+  const temperature = (forecastData[i].main.temp - 273.15).toFixed(1) + "°C";
+  const humidity = forecastData[i].main.humidity + "%";
+  const windSpeed = forecastData[i].wind.speed + "meter/sec";
+  const weather = forecastData[i].weather[0].main;
+  const date = forecastData[i].dt_txt;
+  generateCard(temperature, humidity, windSpeed, weather, date);
+}
+
+
+} catch (error) {
+console.error(error);
+}
+}
 var firstCity = document.getElementById("cityName");
 
 
 var searchBtn = document.getElementById("searchButton");
 var pastSrch = document.getElementById("pastSearch");
-var searchForm = document.getElementById("searchCity").value;
-var btn = document.createElement("button");
+var searchForm = document.getElementById("searchCity")
+
 var weather = document.getElementById("nowWeather");
 
 var weatherCity2 = document.getElementById("weatherCity2")
@@ -54,26 +86,53 @@ searchBtn.addEventListener("click", function(event) {
   event.preventDefault();
 
   addButton(event);
-  addCity(event);
+ 
   getWeatherData(searchForm);
+  getForecastData();
 
   
 });
 
     
 function addButton() {
-    btn.innerHTML = document.getElementById("searchCity").value;
+  var btn = document.createElement("button");
+    btn.innerHTML = searchForm.value + "<br>";
     btn.classList.add("btn", "btn-primary", "btn-lg");
      pastSrch.appendChild(btn);
     
 
 };
-function addCity(){
-    var searchForm = document.getElementById("searchCity").value;
-    weather.innerHTML += searchForm + "<br>";
+function presentWeather(temperature, humidity, windSpeed, weather){
+    var cityH2 = document.getElementById("cityName");
+    var templi = document.getElementById("temp");
+    var windli = document.getElementById("wind");
+    var humidityli = document.getElementById("humidity");
+    var weatherli = document.getElementById("weather");
+    cityH2.textContent = searchForm.value;
+    templi.textContent = temperature;
+    windli.textContent = windSpeed;
+    humidityli.textContent = humidity;
+    weatherli.textContent = weather;
+
+   
    
    
     
 
 };
 
+function generateCard (temperature, humidity, windSpeed, weather, date){
+  var futureId = document.getElementById("future");
+  var newDiv = document.createElement("div");
+  newDiv.classList.add("card", "text-white", "bg-secondary", "mb-3");
+  newDiv.innerHTML = `<div class="card-header" id="weatherCity2">${date}</div>
+  <div class="card-body">
+      <h5 class="card-title">${weather}</h5>
+      <p class="card-text">${temperature}</p>
+      <p class="card-text">${humidity}</p>
+      <p class="card-text">${windSpeed}</p>
+
+  </div>`
+ futureId.append(newDiv);
+
+}
