@@ -136,3 +136,14 @@ function generateCard (temperature, humidity, windSpeed, weather, date){
  futureId.append(newDiv);
 
 }
+
+pastSrch.addEventListener("click", function(event) {
+  if (event.target.tagName === "BUTTON") {
+    const cityName = event.target.textContent.trim();
+    getWeatherData({ value: cityName });
+    getForecastData();
+  }
+});
+
+
+
