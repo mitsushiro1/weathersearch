@@ -11,7 +11,7 @@ THEN I am again presented with current and future conditions for that city */
 
 
 
-const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=cityName&appid=61bf20980c70be5141903b4046209f11`;
+const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=cityName&appid=61bf20980c70be5141903b4046209f11`;
 
  const API_KEY = "61bf20980c70be5141903b4046209f11";
 
@@ -41,7 +41,7 @@ async function getWeatherData(searchForm) {
 
 async function getForecastData (){
  
- const API_URL = "http://api.openweathermap.org/data/2.5/forecast?q=cityName&appid=61bf20980c70be5141903b4046209f11"
+ const API_URL = "https://api.openweathermap.org/data/2.5/forecast?q=cityName&appid=61bf20980c70be5141903b4046209f11"
 
  try {
       
