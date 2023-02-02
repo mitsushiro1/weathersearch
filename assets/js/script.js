@@ -121,21 +121,7 @@ function presentWeather(temperature, humidity, windSpeed, weather){
 
 };
 
-function generateCard (temperature, humidity, windSpeed, weather, date){
-  var futureId = document.getElementById("future");
-  var newDiv = document.createElement("div");
-  newDiv.classList.add("card", "text-white", "bg-secondary", "mb-3");
-  newDiv.innerHTML = `<div class="card-header" id="weatherCity2">${date}</div>
-  <div class="card-body">
-      <h5 class="card-title">${weather}</h5>
-      <p class="card-text">${temperature}</p>
-      <p class="card-text">${humidity}</p>
-      <p class="card-text">${windSpeed}</p>
 
-  </div>`
- futureId.append(newDiv);
-
-}
 
 pastSrch.addEventListener("click", function(event) {
   if (event.target.tagName === "BUTTON") {
